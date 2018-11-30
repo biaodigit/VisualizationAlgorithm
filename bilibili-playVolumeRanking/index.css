@@ -43,6 +43,7 @@
     width: 30px;
     height: 20px;
     background: red;
+    border-radius: 0 4px 4px 0;
     transition: width 2s;
 }
 

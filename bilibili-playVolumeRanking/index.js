@@ -32,7 +32,7 @@ class playRankingAnimate {
         setInterval(() => {
             this.bindData(createData());
             this.animationLoop()
-        }, 2500);
+        }, 3000);
     }
 
     //创建dom函数
@@ -83,18 +83,38 @@ class playRankingAnimate {
         this.data.forEach((next, index) => {
             this.ele.forEach((prev) => {
                 if (prev.item.rank === next.rank) {
-                    prev.item.count = next.count;
-
                     const ele = prev.el;
                     ele.row.style.top = `${index * 40 + 50}px`;
-                    ele.graph.style.width = `${prev.item.count}px`;
-                    ele.count.textContent = prev.item.count;
+                    ele.graph.style.width = `${next.count}px`;
+                    this.digitalAnimation(ele, prev.item.count, next.count)
                 }
             })
         })
+    }
+
+    //数值动画
+    digitalAnimation(el, prevDigit, nextDigit) {
+        let timer;
+        if (prevDigit > nextDigit) {
+            timer = setInterval(() => {
+                if (prevDigit > nextDigit) {
+                    el.count.textContent = --prevDigit
+                } else {
+                    timer = null
+                }
+            }, 5);
+        } else {
+            timer = setInterval(() => {
+                if (prevDigit < nextDigit) {
+                    el.count.textContent = ++prevDigit
+                } else {
+                    timer = null
+                }
+            }, 5);
+        }
     }
 }
 
 let playRank = new playRankingAnimate();
 
-playRank.action()
+playRank.action();
