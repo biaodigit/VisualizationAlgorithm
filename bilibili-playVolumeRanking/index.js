@@ -54,7 +54,9 @@ class playRankingAnimate {
 
             const graph = document.createElement('span');
             graph.classList.add('graph');
-            graph.style.width = `${item.count}px`;
+            setTimeout(() => {
+                graph.style.width = `${item.count}px`;
+            });
             content.appendChild(graph);
 
             const count = document.createElement('span');

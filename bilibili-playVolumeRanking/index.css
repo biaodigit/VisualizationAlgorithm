@@ -40,7 +40,7 @@
 .graph {
     display: inline-block;
     vertical-align: middle;
-    width: 30px;
+    width: 0;
     height: 20px;
     background: red;
     border-radius: 0 4px 4px 0;
